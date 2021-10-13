@@ -9,7 +9,7 @@ namespace ProjectCSharps.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        public ActionResult Login()
+        public ActionResult Index()
         {
             return View();
         }
