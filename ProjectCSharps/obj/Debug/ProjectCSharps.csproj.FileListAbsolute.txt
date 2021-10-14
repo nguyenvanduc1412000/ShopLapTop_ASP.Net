@@ -230,8 +230,12 @@ C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps
 C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\bin\Newtonsoft.Json.xml
 C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\bin\Antlr3.Runtime.pdb
 C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.csproj.AssemblyReference.cache
 C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.csproj.CoreCompileInputs.cache
 C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.csproj.CopyComplete
 C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.dll
 C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.pdb
+C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\bin\EntityFramework.dll
+C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\bin\EntityFramework.SqlServer.dll
+C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\bin\EntityFramework.xml
+C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\bin\EntityFramework.SqlServer.xml
+C:\Users\asus\OneDrive\Máy tính\ShopLapTopC#\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.csproj.AssemblyReference.cache
