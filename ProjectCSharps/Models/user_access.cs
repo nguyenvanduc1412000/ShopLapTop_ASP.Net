@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectCSharps.Context
+namespace ProjectCSharps.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class user_access
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public int id_user { get; set; }
+        public System.DateTime date_access { get; set; }
+    
+        public virtual user user { get; set; }
     }
 }

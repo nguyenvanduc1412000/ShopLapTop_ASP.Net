@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectCSharps.Context
+namespace ProjectCSharps.Models
 {
     using System;
     using System.Collections.Generic;

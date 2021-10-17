@@ -77,9 +77,9 @@
                                         <div class="ht-setting-trigger"><span>Setting</span></div>
                                         <div class="setting ht-setting">
                                             <ul class="ht-setting-list">
-                                                <li>@Html.ActionLink("Account","Index","Login")</li>
+                                                <li>@Html.ActionLink("Sign In","Login","Account")</li>
                                                 <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="login.html">Sign In</a></li>
+                                                <li>@Html.ActionLink("Sign Up", "Register", "Account")</li>
                                             </ul>
                                         </div>
                                     </li>
@@ -288,7 +288,7 @@
                                 <nav>
                                     <ul>
                                         <li class="dropdown-holder">
-                                            <a href="index.html">Home</a>
+                                            <a href="/Home">Home</a>
 
                                         </li>
                                         <li class="megamenu-holder">
