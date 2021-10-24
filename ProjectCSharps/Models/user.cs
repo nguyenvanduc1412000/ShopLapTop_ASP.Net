@@ -11,7 +11,8 @@ namespace ProjectCSharps.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,16 +21,29 @@ namespace ProjectCSharps.Models
             this.Orders = new HashSet<Order>();
             this.user_access = new HashSet<user_access>();
         }
-    
+
         public int id_user { get; set; }
+        [Required(ErrorMessage = "Please enter username")]
         public string username { get; set; }
+        [Required(ErrorMessage = "Please enter password")]
+        [DataType(DataType.Password)]
         public string password { get; set; }
+        
         public Nullable<System.DateTime> dob { get; set; }
         public string gender { get; set; }
+       
+        [Required(ErrorMessage = "Please enter email")]
         public string email { get; set; }
+        
         public string phone { get; set; }
         public string address { get; set; }
         public string role { get; set; }
+        [Required(ErrorMessage = "Please check your repassword")]
+        [DataType(DataType.Password)]
+        [Compare("password")]
+        public string repassword { get; set; }
+        public string LoginErrorMessage { get; set; }
+       
         public Nullable<int> Block { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
