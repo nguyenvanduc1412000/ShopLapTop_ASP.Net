@@ -1,1 +1,77 @@
+<<<<<<< HEAD
 ﻿
+=======
+﻿@model ProjectCSharps.Models.user
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>REGISTER</title>
+</head>
+<body>
+    <div id="form-register"> 
+        @using (Html.BeginForm("Register","Account", FormMethod.Post))
+            {
+              @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <th colspan="2">Register</th>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(m => m.username)</td>
+                <td>@Html.TextBoxFor(m => m.username)</td>
+            </tr>
+            <tr>
+                <th colspan="2">@Html.ValidationMessageFor(m => m.username)</th>
+            </tr>
+
+            <tr>
+                <td> @Html.LabelFor(m => m.password)</td>
+                <td>@Html.PasswordFor(m => m.password)</td>
+            </tr>
+            <tr>
+                <th colspan="2">@Html.ValidationMessageFor(m => m.password)</th>
+            </tr>
+
+            <tr>
+                <td> @Html.LabelFor(m => m.repassword)</td>
+                <td>@Html.PasswordFor(m => m.repassword)</td>
+            </tr>
+            <tr>
+                <th colspan="2">@Html.ValidationMessageFor(m => m.repassword)</th>
+            </tr>
+
+            <tr>
+                <td> @Html.LabelFor(m => m.email)</td>
+                <td>@Html.TextBoxFor(m => m.email)</td>
+            </tr>
+            <tr>
+                <th colspan="2">@Html.ValidationMessageFor(m => m.email)</th>
+            </tr>
+            <tr>
+                <th colspan="2">@if (ViewBag.error != null)
+                { 
+                
+                  <span>@ViewBag.error</span>                }
+                </th>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Register" />
+                    <input type="reset" value="Reset" />
+                    <a href="@Url.Action("Index","Account")">LogIn</a>
+                </td>
+            </tr>
+        </table>
+            }
+    </div>
+</body>
+</html>
+>>>>>>> e5eb560c3bf7bb4255879603196d40425681ba35
