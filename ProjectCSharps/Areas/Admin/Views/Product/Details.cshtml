@@ -1,0 +1,70 @@
+﻿@model ProjectCSharps.Models.product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .dl-horizontal{
+        margin-left:30px;
+    }
+</style>
+
+<div>
+   
+    <dl class="dl-horizontal">
+        <h4>Details product</h4>
+        <hr />
+        <dt>
+            Name_Product
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name_pro)
+        </dd>
+
+
+
+        <dt>
+            Quantity
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            Price
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            Supplier
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplier)
+        </dd>
+
+
+
+
+        <dt>
+            Name_Cat
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.name_cat)
+        </dd>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id_pro }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </dl>
+    
+</div>
+
