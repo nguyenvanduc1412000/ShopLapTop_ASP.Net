@@ -11,7 +11,11 @@ namespace ProjectCSharps
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-
+            routes.MapRoute(
+                 name: "Cart",
+                 url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Cart", action = "Index" }
+             );
             routes.MapRoute(
                  name: "Home",
                  url: "{controller}/{action}/{id}",

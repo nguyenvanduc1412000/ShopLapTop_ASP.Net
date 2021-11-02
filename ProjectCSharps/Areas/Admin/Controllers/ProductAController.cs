@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace ProjectCSharps.Areas.Admin.Controllers
 {
 
-    public class ProductController : Controller
+    public class ProductAController : Controller
     {
         Web_CSharpsEntities b = new Web_CSharpsEntities();
         // GET: Admin/Product

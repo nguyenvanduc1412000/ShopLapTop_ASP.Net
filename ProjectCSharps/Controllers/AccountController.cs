@@ -67,7 +67,7 @@ namespace ProjectCSharps.Controllers
         }
         public ActionResult LogOut()
         {
-            Session.Abandon();
+            Session.Clear();
             return RedirectToAction("Login","Account");
             
         }

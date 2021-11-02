@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿@model ProjectCSharps.Models.user
+﻿﻿@model ProjectCSharps.Models.user
 @{
     Layout = null;
 }
@@ -16,51 +15,49 @@
         @using (Html.BeginForm("Authen", "Account", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-        <table>
-            <tr>
-                <th colspan="2">LogIn</th>
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(m => m.email)</td>
-                <td>@Html.TextBoxFor(m => m.email)</td>
-            </tr>
-            <tr>
-                <th colspan="2">@Html.ValidationMessageFor(m => m.email)</th>
-            </tr>
+            <table>
+                <tr>
+                    <th colspan="2">LogIn</th>
+                </tr>
+                <tr>
+                    <td> @Html.LabelFor(m => m.email)</td>
+                    <td>@Html.TextBoxFor(m => m.email)</td>
+                </tr>
+                <tr>
+                    <th colspan="2">@Html.ValidationMessageFor(m => m.email)</th>
+                </tr>
 
-            <tr>
-                <td> @Html.LabelFor(m => m.password)</td>
-                <td>@Html.PasswordFor(m => m.password)</td>
-            </tr>
-            <tr>
-                <th colspan="2">@Html.ValidationMessageFor(m => m.password)</th>
-            </tr>
-
-
+                <tr>
+                    <td> @Html.LabelFor(m => m.password)</td>
+                    <td>@Html.PasswordFor(m => m.password)</td>
+                </tr>
+                <tr>
+                    <th colspan="2">@Html.ValidationMessageFor(m => m.password)</th>
+                </tr>
 
 
-            <tr>
-                <th colspan="2">
-                    @if (ViewBag.error != null)
-                    {
+                
 
-                        <span>@ViewBag.error</span>}
-                </th>
-            </tr>
+                <tr>
+                    <th colspan="2">
+                        @if (ViewBag.error != null)
+                        {
 
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="LogIn" />
-                    
-                    <a href="@Url.Action("Register","Account")">Register</a>
-                </td>
-            </tr>
-        </table>
-    }
+                            <span>@ViewBag.error</span>}
+                    </th>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="LogIn" />
+
+                        <a href="@Url.Action("Register","Account")">Register</a>
+                    </td>
+                </tr>
+            </table>
+        }
     </div>
 </body>
 </html>
-=======
-﻿
->>>>>>> duc
+

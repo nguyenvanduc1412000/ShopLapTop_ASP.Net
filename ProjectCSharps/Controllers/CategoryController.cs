@@ -14,8 +14,8 @@ namespace ProjectCSharps.Controllers
 
         public ActionResult ProductByCategoryId(int id)
         {
-            HomeModel m = new HomeModel();
-            m.listPByCid= objProductByCId.products.Where(n => n.id_cat == id).ToList();
+           
+            var m= objProductByCId.products.Where(n => n.id_cat == id).ToList();
             return View(m);
         }
         

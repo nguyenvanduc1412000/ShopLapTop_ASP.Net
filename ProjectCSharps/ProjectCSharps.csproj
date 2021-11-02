@@ -130,7 +130,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductAController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
@@ -2110,10 +2111,10 @@
     <Content Include="Areas\Admin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.map" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductA\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductA\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductA\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2143,6 +2144,7 @@
     <Content Include="Views\Category\ProductByCategoryId.cshtml" />
     <Content Include="Views\Shared\CategoryPage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
