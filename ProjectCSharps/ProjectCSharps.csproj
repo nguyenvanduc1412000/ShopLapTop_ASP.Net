@@ -132,6 +132,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
@@ -2149,6 +2150,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
