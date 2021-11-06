@@ -10,12 +10,19 @@ namespace ProjectCSharps.Controllers
     public class ProductController : Controller
     {
         // GET: Product
-        Web_CSharpsEntities objProductById = new Web_CSharpsEntities();
+        Web_CSharpsEntities objProduct = new Web_CSharpsEntities();
+        //public ActionResult Index(string keySearch)
+        //{
+        //    var result = objProduct.products.Where(n => n.name_pro.Contains(keySearch)).ToList();
+
+         
+        //    return View(result);
+        //}
         public ActionResult Detail(int pid)
         {
             
             
-            var result = objProductById.products.Where(n => n.id_pro == pid).FirstOrDefault();
+            var result = objProduct.products.Where(n => n.id_pro == pid).FirstOrDefault();
             return View(result);
         }
     }

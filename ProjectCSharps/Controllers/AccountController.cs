@@ -24,6 +24,7 @@ namespace ProjectCSharps.Controllers
            if(check == null)
             {
                 _user.LoginErrorMessage = "Error Mail or Pass ! Try again please!";
+                ViewBag.err = "Error Mail or Pass ! Try again please!";
                 return View("Login", _user);
 
             }

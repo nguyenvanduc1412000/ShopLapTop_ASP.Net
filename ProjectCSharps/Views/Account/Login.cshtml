@@ -1,4 +1,4 @@
-﻿﻿@model ProjectCSharps.Models.user
+﻿@*﻿@model ProjectCSharps.Models.user
     @{
         Layout = null;
     }
@@ -59,23 +59,23 @@
             }
         </div>
     </body>
-    </html>
-<!--<!doctype html>
-<html class="no-js" lang="zxx">-->
+    </html>*@
 
-<!-- login-register31:27-->
 
-<!--<body>-->
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <!-- Begin Body Wrapper -->
-    <!--<div class="body-wrapper">-->
-        <!-- Begin Header Area -->
-        
-        <!-- Header Area End Here -->
-        <!-- Begin Li's Breadcrumb Area -->
-        <!--<div class="breadcrumb-area">
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+
+<body>
+
+
+
+    <div class="body-wrapper">
+
+
+
+        <div class="breadcrumb-area">
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
@@ -84,25 +84,25 @@
                     </ul>
                 </div>
             </div>
-        </div>-->
-        <!-- Li's Breadcrumb Area End Here -->
-        <!-- Begin Login Content Area -->
-        <!--<div class="page-section mb-60">
+        </div>
+
+        <div class="page-section mb-60">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">-->
-                        <!-- Login Form s-->
-                        <!--<form action="#">
+                    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                        @using (Html.BeginForm("Authen", "Account", FormMethod.Post))
+                        {
+                            @*<form action="/Authen" method="post">*@
                             <div class="login-form">
                                 <h4 class="login-title">Login</h4>
                                 <div class="row">
                                     <div class="col-md-12 col-12 mb-20">
                                         <label>Email Address*</label>
-                                        <input class="mb-0" type="email" placeholder="Email Address">
+                                        <input class="mb-0" type="email" placeholder="Email Address" name="email">
                                     </div>
                                     <div class="col-12 mb-20">
                                         <label>Password</label>
-                                        <input class="mb-0" type="password" placeholder="Password">
+                                        <input class="mb-0" type="password" placeholder="Password" name="password">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
@@ -112,32 +112,30 @@
                                     </div>
                                     <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
                                         <a href="#"> Forgotten pasward?</a>
-                                        <a href="#"> Forgotten pasward?</a>
+
 
                                     </div>
+                                    <p style="color:red">@ViewBag.err</p>
                                     <div class="col-md-12">
                                         <button class="register-button mt-0">Login</button>
                                     </div>
-                                   
+
                                 </div>
                             </div>
-                        </form>
+                            @*</form>*@
+                        }
                     </div>
                 </div>
             </div>
-        </div>-->
-        <!-- Login Content Area End Here -->
-        <!-- Begin Footer Area -->
-       
-        <!-- Footer Area End Here -->
-    <!--</div>-->
-    <!-- Body Wrapper End Here -->
-    <!-- jQuery-V1.12.4 -->
-    
-<!--</body>-->
+        </div>
 
-<!-- login-register31:27-->
-<!--</html>-->
+    </div>
+
+
+</body>
+
+
+</html>
 
 
 
