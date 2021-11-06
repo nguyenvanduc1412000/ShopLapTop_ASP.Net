@@ -1,6 +1,70 @@
+<<<<<<< HEAD
 ﻿@*﻿@model ProjectCSharps.Models.user
     @{
         Layout = null;
+=======
+<<<<<<< HEAD
+﻿
+=======
+﻿@model ProjectCSharps.Models.user
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>REGISTER</title>
+</head>
+<body>
+    <div id="form-login">
+        @using (Html.BeginForm("Authen", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <th colspan="2">LogIn</th>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(m => m.email)</td>
+                <td>@Html.TextBoxFor(m => m.email)</td>
+            </tr>
+            <tr>
+                <th colspan="2">@Html.ValidationMessageFor(m => m.email)</th>
+            </tr>
+
+            <tr>
+                <td> @Html.LabelFor(m => m.password)</td>
+                <td>@Html.PasswordFor(m => m.password)</td>
+            </tr>
+            <tr>
+                <th colspan="2">@Html.ValidationMessageFor(m => m.password)</th>
+            </tr>
+
+
+
+
+            <tr>
+                <th colspan="2">
+                    @if (ViewBag.error != null)
+                    {
+
+                        <span>@ViewBag.error</span>}
+                </th>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="LogIn" />
+                    
+                    <a href="@Url.Action("Register","Account")">Register</a>
+                </td>
+            </tr>
+        </table>
+>>>>>>> duc
     }
 
     <!DOCTYPE html>
@@ -136,6 +200,7 @@
 
 
 </html>
+<<<<<<< HEAD
 
 
 
@@ -144,3 +209,6 @@
 
 
 
+=======
+>>>>>>> e5eb560c3bf7bb4255879603196d40425681ba35
+>>>>>>> duc
