@@ -321,3 +321,4 @@ C:\Users\admin\Desktop\PRJ Prn\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\Proje
 C:\Users\admin\Desktop\PRJ Prn\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\PRJ Prn\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.dll
 C:\Users\admin\Desktop\PRJ Prn\ShopLapTop_ASP.Net\ProjectCSharps\obj\Debug\ProjectCSharps.pdb
+

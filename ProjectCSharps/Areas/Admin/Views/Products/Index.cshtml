@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ProjectCSharps.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<table class="table">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <br />
+    <tr>
+        <th>
+           ProductName
+        </th>
+       
+        <th>
+           Quantity
+        </th>
+        <th>
+           Price
+        </th>
+        <th>
+          Supplier
+        </th>
+        <th>
+           Infor
+        </th>
+        
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name_pro)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.supplier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.infor)
+            </td>
+           
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_pro }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_pro }) |
+               @Html.ActionLink("Delete","Delete", new { id = item.id_pro })
+            </td>
+        </tr>
+    }
+
+</table>

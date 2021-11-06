@@ -1,4 +1,5 @@
-﻿@model ProjectCSharps.Models.HomeModel
+﻿@using ProjectCSharps.Models
+@model List<product>
 @{
     ViewBag.Title = "ProductByCategoryId";
 }
@@ -75,7 +76,7 @@
                             <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                                 <div class="product-area shop-product-area">
                                     <div class="row">
-                                        @foreach(var item in Model.listPByCid)
+                                        @foreach(var item in Model)
                                         {
                                             <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
                                                 <!-- single-product-wrap start -->

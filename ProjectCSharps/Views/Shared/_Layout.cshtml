@@ -77,9 +77,28 @@
                                         <div class="ht-setting-trigger"><span>Setting</span></div>
                                         <div class="setting ht-setting">
                                             <ul class="ht-setting-list">
-                                                <li>@Html.ActionLink("Sign In","Login","Account")</li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li>@Html.ActionLink("Sign Up", "Register", "Account")</li>
+                                                @if (Session["id_user"] != null)
+                                                {
+
+
+                                                    <li><a href="checkout.html">Checkout</a></li>
+
+
+                                                    <li><a href="~/Admin/Products/Index">Admin</a></li>
+
+
+                                                    <li><a href="~/Account/Logout">Logout</a></li>
+
+
+
+                                                }
+                                                else
+                                                {
+                                                    <li>@Html.ActionLink("Sign In", "Login", "Account")</li>
+                                                    <li><a href="checkout.html">Checkout</a></li>
+                                                    <li>@Html.ActionLink("Sign Up", "Register", "Account")</li>
+                                                }
+
                                             </ul>
                                         </div>
                                     </li>
