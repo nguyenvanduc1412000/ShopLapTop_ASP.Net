@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LAPTOP_ASPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id_cat" />
+          </Key>
+          <Property Name="id_cat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_cat" Type="varchar" MaxLength="255" />
+          <Property Name="describe" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="cid" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="totalmoney" Type="money" />
+        </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="oid" />
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="oid" Type="int" Nullable="false" />
+          <Property Name="pid" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="float" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id_pro" />
+          </Key>
+          <Property Name="id_pro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cat" Type="int" />
+          <Property Name="name_pro" Type="varchar" MaxLength="255" />
+          <Property Name="images" Type="varchar" MaxLength="255" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="price" Type="float" />
+          <Property Name="supplier" Type="varchar" MaxLength="255" />
+          <Property Name="infor" Type="varchar" MaxLength="255" />
+          <Property Name="sell_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="dob" Type="date" />
+          <Property Name="gender" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="phone" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="role" Type="varchar" MaxLength="255" />
+          <Property Name="Block" Type="int" />
+        </EntityType>
+        <EntityType Name="User_access">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="date_access" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__product__id_cat__5812160E">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="id_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="oid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Product">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id_pro" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_useraccess_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="User_access" Type="Self.User_access" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="User_access">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAPTOP_ASPModelStoreContainer">
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderLine" EntityType="Self.OrderLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_access" EntityType="Self.User_access" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__product__id_cat__5812160E" Association="Self.FK__product__id_cat__5812160E">
+            <End Role="category" EntitySet="category" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="user" EntitySet="user" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Product" Association="Self.FK_OrderLine_Product">
+            <End Role="product" EntitySet="product" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_useraccess_user" Association="Self.FK_useraccess_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="User_access" EntitySet="User_access" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LAPTOP_ASPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id_cat" />
+          </Key>
+          <Property Name="id_cat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_cat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="describe" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="products" Relationship="Self.FK__product__id_cat__5812160E" FromRole="category" ToRole="product" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="totalmoney" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="user" />
+          <NavigationProperty Name="OrderLines" Relationship="Self.FK_OrderLine_Order" FromRole="Order" ToRole="OrderLine" />
+        </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="oid" />
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="oid" Type="Int32" Nullable="false" />
+          <Property Name="pid" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Double" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderLine_Order" FromRole="OrderLine" ToRole="Order" />
+          <NavigationProperty Name="product" Relationship="Self.FK_OrderLine_Product" FromRole="OrderLine" ToRole="product" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id_pro" />
+          </Key>
+          <Property Name="id_pro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cat" Type="Int32" />
+          <Property Name="name_pro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="images" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="price" Type="Double" />
+          <Property Name="supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="infor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sell_ID" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="Self.FK__product__id_cat__5812160E" FromRole="product" ToRole="category" />
+          <NavigationProperty Name="OrderLines" Relationship="Self.FK_OrderLine_Product" FromRole="product" ToRole="OrderLine" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Block" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="user" ToRole="Order" />
+          <NavigationProperty Name="User_access" Relationship="Self.FK_useraccess_user" FromRole="user" ToRole="User_access" />
+        </EntityType>
+        <EntityType Name="User_access">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="date_access" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="user" Relationship="Self.FK_useraccess_user" FromRole="User_access" ToRole="user" />
+        </EntityType>
+        <Association Name="FK__product__id_cat__5812160E">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="id_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="oid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Product">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id_pro" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_useraccess_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="User_access" Type="Self.User_access" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="User_access">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAPTOP_ASPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderLines" EntityType="Self.OrderLine" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="User_access" EntityType="Self.User_access" />
+          <AssociationSet Name="FK__product__id_cat__5812160E" Association="Self.FK__product__id_cat__5812160E">
+            <End Role="category" EntitySet="categories" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="user" EntitySet="users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderLine" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Product" Association="Self.FK_OrderLine_Product">
+            <End Role="product" EntitySet="products" />
+            <End Role="OrderLine" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_useraccess_user" Association="Self.FK_useraccess_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="User_access" EntitySet="User_access" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LAPTOP_ASPModelStoreContainer" CdmEntityContainer="LAPTOP_ASPEntities">
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="LAPTOP_ASPModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="describe" ColumnName="describe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="LAPTOP_ASPModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="totalmoney" ColumnName="totalmoney" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderLines">
+            <EntityTypeMapping TypeName="LAPTOP_ASPModel.OrderLine">
+              <MappingFragment StoreEntitySet="OrderLine">
+                <ScalarProperty Name="oid" ColumnName="oid" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="LAPTOP_ASPModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id_pro" ColumnName="id_pro" />
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_pro" ColumnName="name_pro" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="supplier" ColumnName="supplier" />
+                <ScalarProperty Name="infor" ColumnName="infor" />
+                <ScalarProperty Name="sell_ID" ColumnName="sell_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="LAPTOP_ASPModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_access">
+            <EntityTypeMapping TypeName="LAPTOP_ASPModel.User_access">
+              <MappingFragment StoreEntitySet="User_access">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="date_access" ColumnName="date_access" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

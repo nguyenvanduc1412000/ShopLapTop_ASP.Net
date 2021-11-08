@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LAPTOP_ASPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id_cat" />
+    </Key>
+    <Property Name="id_cat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_cat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="describe" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__product__id_cat__5812160E" FromRole="category" ToRole="product" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cid" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="totalmoney" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="user" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="user" />
+    <NavigationProperty Name="OrderLines" Relationship="Self.FK_OrderLine_Order" FromRole="Order" ToRole="OrderLine" />
+  </EntityType>
+  <EntityType Name="OrderLine">
+    <Key>
+      <PropertyRef Name="oid" />
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="oid" Type="Int32" Nullable="false" />
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Double" Nullable="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderLine_Order" FromRole="OrderLine" ToRole="Order" />
+    <NavigationProperty Name="product" Relationship="Self.FK_OrderLine_Product" FromRole="OrderLine" ToRole="product" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id_pro" />
+    </Key>
+    <Property Name="id_pro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cat" Type="Int32" />
+    <Property Name="name_pro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="images" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Double" />
+    <Property Name="supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="infor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sell_ID" Type="Int32" />
+    <NavigationProperty Name="category" Relationship="Self.FK__product__id_cat__5812160E" FromRole="product" ToRole="category" />
+    <NavigationProperty Name="OrderLines" Relationship="Self.FK_OrderLine_Product" FromRole="product" ToRole="OrderLine" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="DateTime" Precision="0" />
+    <Property Name="gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Block" Type="Int32" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="user" ToRole="Order" />
+    <NavigationProperty Name="User_access" Relationship="Self.FK_useraccess_user" FromRole="user" ToRole="User_access" />
+  </EntityType>
+  <EntityType Name="User_access">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <Property Name="date_access" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="user" Relationship="Self.FK_useraccess_user" FromRole="User_access" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__product__id_cat__5812160E">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id_cat" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="id_cat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="oid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Product">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id_pro" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_useraccess_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="User_access" Type="Self.User_access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="User_access">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LAPTOP_ASPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrderLines" EntityType="Self.OrderLine" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="User_access" EntityType="Self.User_access" />
+    <AssociationSet Name="FK__product__id_cat__5812160E" Association="Self.FK__product__id_cat__5812160E">
+      <End Role="category" EntitySet="categories" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="user" EntitySet="users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderLine" EntitySet="OrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Product" Association="Self.FK_OrderLine_Product">
+      <End Role="product" EntitySet="products" />
+      <End Role="OrderLine" EntitySet="OrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_useraccess_user" Association="Self.FK_useraccess_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="User_access" EntitySet="User_access" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
