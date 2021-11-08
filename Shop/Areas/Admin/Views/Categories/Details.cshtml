@@ -1,0 +1,35 @@
+﻿@model Shop.Models.category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name_cat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name_cat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.describe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.describe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_cat }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

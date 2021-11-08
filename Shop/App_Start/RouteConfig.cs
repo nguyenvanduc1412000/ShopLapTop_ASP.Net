@@ -16,11 +16,7 @@ namespace Shop
                  url: "{controller}/{action}/{id}",
                  defaults: new { controller = "Cart", action = "Index" }
              );
-            routes.MapRoute(
-                 name: "Home",
-                 url: "{controller}/{action}/{id}",
-                 defaults: new { controller = "Home", action = "Index" }
-             );
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
