@@ -1,77 +1,92 @@
 
-﻿@model Shop.Models.user
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+<!doctype html>
+<html class="no-js" lang="zxx">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>REGISTER</title>
-</head>
+
+
 <body>
-    <div id="form-register"> 
-        @using (Html.BeginForm("Register","Account", FormMethod.Post))
-            {
-              @Html.AntiForgeryToken()
-        <table>
-            <tr>
-                <th colspan="2">Register</th>
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(m => m.username)</td>
-                <td>@Html.TextBoxFor(m => m.username)</td>
-            </tr>
-            <tr>
-                <th colspan="2">@Html.ValidationMessageFor(m => m.username)</th>
-            </tr>
 
-            <tr>
-                <td> @Html.LabelFor(m => m.password)</td>
-                <td>@Html.PasswordFor(m => m.password)</td>
-            </tr>
-            <tr>
-                <th colspan="2">@Html.ValidationMessageFor(m => m.password)</th>
-            </tr>
 
-            <tr>
-                <td> @Html.LabelFor(m => m.repassword)</td>
-                <td>@Html.PasswordFor(m => m.repassword)</td>
-            </tr>
-            <tr>
-                <th colspan="2">@Html.ValidationMessageFor(m => m.repassword)</th>
-            </tr>
 
-            <tr>
-                <td> @Html.LabelFor(m => m.email)</td>
-                <td>@Html.TextBoxFor(m => m.email)</td>
-            </tr>
-            <tr>
-                <th colspan="2">@Html.ValidationMessageFor(m => m.email)</th>
-            </tr>
-            <tr>
-                <th colspan="2">@if (ViewBag.error != null)
-                { 
-                
-                  <span>@ViewBag.error</span>                }
-                </th>
-            </tr>
+    <div class="body-wrapper">
 
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="Register" />
-                    <input type="reset" value="Reset" />
-                    <a href="@Url.Action("Login","Account")">LogIn</a>
-                    <a href="@Url.Action("Index","Home")">Home</a>
 
-                </td>
-            </tr>
-        </table>
-            }
+
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Login Register</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section mb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                        {
+                            @*<form action="/Authen" method="post">*@
+                            <div class="login-form">
+                                <h4 class="login-title">Register</h4>
+                                <div class="row">
+                                    <div class="col-md-12 col-12 mb-20">
+                                        <label>Email Address*</label>
+                                        <input class="mb-0" type="email" placeholder="Email Address" name="email">
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <label>Your Name*</label>
+                                        <input class="mb-0" type="text" placeholder="Your Name" name="username">
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <label>Password*</label>
+                                        <input class="mb-0" type="password" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <label>Date Of Birth</label>
+                                        <input class="mb-0" type="text" placeholder="YYYY-MM-dd" name="dob">
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <label>Phone</label>
+                                        <input class="mb-0" type="text" placeholder="Phone" name="phone">
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <label>Address</label>
+                                        <input class="mb-0" type="text" placeholder="Address" name="address">
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <label>Gender</label>
+                                        <select name="Gender">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+
+
+                                    <p style="color:red">@ViewBag.err</p>
+                                    <div class="col-md-12">
+                                        <button class="register-button mt-0">Sign Up</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            @*</form>*@
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
 </body>
+
+
 </html>
 

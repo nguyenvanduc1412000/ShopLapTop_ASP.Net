@@ -55,7 +55,9 @@ namespace Shop.Controllers
 
                     _db.SaveChanges();
                     // neu dk thanh cong thif dieu huowng toi login
-                    return RedirectToAction("Index");
+                    ViewBag.error = "Sign up success";
+                    //return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
