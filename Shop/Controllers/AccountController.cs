@@ -57,7 +57,7 @@ namespace Shop.Controllers
                     // neu dk thanh cong thif dieu huowng toi login
                     ViewBag.error = "Sign up success";
                     //return RedirectToAction("Index");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Home");
                 }
                 else
                 {
@@ -73,5 +73,43 @@ namespace Shop.Controllers
             return RedirectToAction("Login","Account");
             
         }
+        [HttpGet]
+        public ActionResult ChangePass()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult ChangePass(user _user)
+        {
+            if (ModelState.IsValid)
+            {
+                var check = _db.users.Where(s => s.password.Equals(_user.password) && s.email.Equals(_user.email)).FirstOrDefault();
+                if (check == null)
+                {
+                    ViewBag.err = "Information Incorrect!!!";
+                    return View("ChangePass");
+
+                   
+                   
+                }
+                else
+                {
+                    _db.Configuration.ValidateOnSaveEnabled = false;
+                    
+                    _db.users.Add(_user);
+
+                    _db.SaveChanges();
+                    // neu dk thanh cong thif dieu huowng toi login
+                    ViewBag.error = "Change Pass success";
+                    //return RedirectToAction("Index");
+                   // return RedirectToAction("Index", "Home");
+                }
+            }
+            return View();
+        }
+
+
     }
 }
