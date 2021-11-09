@@ -141,6 +141,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -2150,11 +2151,11 @@
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Shared\CategoryPage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Category\ProductByCategoryId.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ChangePass.cshtml" />
+    <Content Include="Views\Cart\ShowToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

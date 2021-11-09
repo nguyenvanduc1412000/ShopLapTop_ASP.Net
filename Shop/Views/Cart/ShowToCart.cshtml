@@ -1,0 +1,51 @@
+﻿@model Shop.Models.Cart
+
+
+@{
+    ViewBag.Title = "ShowToCart";
+
+}
+
+<h2>ShowToCart</h2>
+@if (Model != null)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            double total = item._shopping_product.price.Value * item._shopping_quantity;
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => item._shopping_product.name_pro)
+                            </td>
+                            <td>
+                                <img src="@Url.Content(item._shopping_product.images)" style="width:100px ; height: 100px " />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item._shopping_product.price)
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("Update_Quantity_Cart", "Cart"))
+                                {
+                                <input type="hidden" value="@item._shopping_product.id_pro" name="id_pro"/>
+                                <input type="number" value="@item._shopping_quantity" name="quantity"/>
+                                <input type="submit" value="Update Quantity"/>
+                                }
+                            </td>
+                            <td>
+                                Total: @total
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            }

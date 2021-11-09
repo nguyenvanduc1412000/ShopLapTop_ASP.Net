@@ -159,7 +159,6 @@ C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\System.Web.WebPage
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\Newtonsoft.Json.xml
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\Antlr3.Runtime.pdb
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.AssemblyReference.cache
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.dll
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.pdb
