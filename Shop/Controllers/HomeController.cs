@@ -20,12 +20,22 @@ namespace Shop.Controllers
 
             return View(m);
         }
-        public ActionResult Shop()
+        public ActionResult Shop(string searchString)
         {
             HomeModel m = new HomeModel();
             m.listC = all.categories.ToList();
-            m.listP = all.products.ToList();
 
+            
+            
+            if (string.IsNullOrEmpty(searchString))
+            {
+                m.listP = all.products.ToList();
+            }
+            else
+            {
+                m.listP = all.products.Where(n => n.name_pro.Contains(searchString)).ToList();
+
+            }
             return View(m);
         }
 

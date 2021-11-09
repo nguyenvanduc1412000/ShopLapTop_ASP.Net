@@ -15,10 +15,24 @@ namespace Shop.Areas.Admin.Controllers
         private LAPTOP_ASPEntities db = new LAPTOP_ASPEntities();
 
         // GET: Admin/Products
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var products = db.products.Include(p => p.category);
-            return View(products.ToList());
+            List<product> products = null;
+            if (string.IsNullOrEmpty(searchString))
+            {
+                 products = db.products.Include(p => p.category).ToList();
+            }
+            else
+            {
+                products = db.products.Include(p => p.category).Where(n => n.name_pro.Contains(searchString)).ToList();
+
+            }
+
+
+
+
+
+            return View(products);
         }
 
         // GET: Admin/Products/Details/5
