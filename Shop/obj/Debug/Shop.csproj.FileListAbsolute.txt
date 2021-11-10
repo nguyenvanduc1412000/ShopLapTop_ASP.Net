@@ -162,3 +162,4 @@ C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\Microsoft.CodeDom.
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.dll
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.pdb
+C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.AssemblyReference.cache
