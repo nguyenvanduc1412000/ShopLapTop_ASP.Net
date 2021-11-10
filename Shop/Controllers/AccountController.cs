@@ -58,7 +58,7 @@ namespace Shop.Controllers
                     // neu dk thanh cong thif dieu huowng toi login
                     ViewBag.error = "Sign up success";
                     //return RedirectToAction("Index");
-                    return RedirectToAction("Login", "Home");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
