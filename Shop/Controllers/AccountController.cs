@@ -21,7 +21,7 @@ namespace Shop.Controllers
         public ActionResult Authen(user _user)
         {
             var check = _db.users.Where(s => s.email.Equals(_user.email) && s.password.Equals(_user.password)).FirstOrDefault();
-           if(check == null)
+           if(check == null||_user.email==null||_user.password==null)
             {
                 ViewBag.err = "Error Mail or Pass ! Try again please!";
                 return View("Login", _user);
@@ -31,7 +31,7 @@ namespace Shop.Controllers
             {
                 Session["id_user"] = _user.id_user;
                 Session["email"] = _user.email;
-                ViewBag.U = _user.role;
+               
                 return RedirectToAction("Index", "Home");
             }
             return View();
