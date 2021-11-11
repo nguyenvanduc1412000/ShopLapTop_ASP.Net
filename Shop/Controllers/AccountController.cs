@@ -58,7 +58,7 @@ namespace Shop.Controllers
                     // neu dk thanh cong thif dieu huowng toi login
                     ViewBag.error = "Sign up success";
                     //return RedirectToAction("Index");
-                    return RedirectToAction("Login", "Home");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
@@ -78,7 +78,6 @@ namespace Shop.Controllers
         public ActionResult ChangePass()
         {
             return View();
-
         }
 
         [HttpPost]
@@ -86,26 +85,29 @@ namespace Shop.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = _db.users.Where(s => s.password.Equals(_user.password) && s.email.Equals(_user.email)).FirstOrDefault();
+                var check = _db.users.Where(s => s.email.Equals(_user.email) && s.password.Equals(_user.password)).FirstOrDefault();
+
                 if (check == null)
                 {
-                    ViewBag.err = "Information Incorrect!!!";
+                    ViewBag.err = "Old Password Incorrect!!!";
                     return View("ChangePass");
-
-                   
-                   
                 }
                 else
                 {
-                    _db.Configuration.ValidateOnSaveEnabled = false;
-                    
-                    _db.users.Add(_user);
-
-                    _db.SaveChanges();
-                    // neu dk thanh cong thif dieu huowng toi login
-                    ViewBag.error = "Change Pass success";
-                    //return RedirectToAction("Index");
-                   // return RedirectToAction("Index", "Home");
+                    var newpass = Request["newpass"].ToString();
+                    var repass = Request["renewpass"].ToString();
+                    if (newpass.Equals(repass))
+                    {
+                        check.password = newpass;
+                        _db.Configuration.ValidateOnSaveEnabled = false;
+                        _db.SaveChanges();
+                        ViewBag.err = "Change Pass successfully";
+                    }
+                    else
+                    {
+                        ViewBag.err = "New Password and Confirm New Password must be the same";
+                        return View("ChangePass");
+                    }
                 }
             }
             return View();
