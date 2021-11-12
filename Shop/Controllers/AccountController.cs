@@ -34,7 +34,6 @@ namespace Shop.Controllers
                
                 return RedirectToAction("Index", "Home");
             }
-            return View();
         }
         [HttpGet]
         public ActionResult Register()

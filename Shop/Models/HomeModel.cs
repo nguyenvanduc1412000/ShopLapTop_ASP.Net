@@ -10,7 +10,5 @@ namespace Shop.Models
     {
         public List<product> listP { get; set; }
         public List<category> listC { get; set; }
-        
-        
     }
 }
