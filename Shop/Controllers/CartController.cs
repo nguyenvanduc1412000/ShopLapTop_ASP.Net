@@ -11,38 +11,42 @@ namespace ProjectCSharps.Controllers
     {
         LAPTOP_ASPEntities _db = new LAPTOP_ASPEntities();
         // GET: Cart
-        public Cart GetCart()
+        public List<CartItem> getCart()
         {
-            Cart cart = Session["Cart"] as Cart;
-            if(cart == null || Session["Cart"] == null)
+            List<CartItem> cartitems = Session["Cart"] as List<CartItem>;
+            if(cartitems == null)
             {
-                cart = new Cart();
-                Session["Cart"] = cart;
+                cartitems = new List<CartItem>();
+                Session["Cart"] = cartitems;
             }
-            return cart;
-        }
-        // add items vaof gio hang
-        public ActionResult AddtoCart(int id)
-        {
-            var pro = _db.products.SingleOrDefault(s => s.id_pro == id);
-                if (pro != null)
-                {
-                    GetCart().Add(pro);
-
-                }
-            
-            return View();
+            return cartitems;
         }
 
-        //trang gio hang
         public ActionResult ShowToCart()
         {
-            if(Session["Cart"] == null)
+            List<CartItem> cartitems = getCart();
+            return View(cartitems);
+        }
+
+        public ActionResult AddToCart(int id)
+        {
+            var pro = _db.products.SingleOrDefault(s => s.id_pro == id);
+          
+            if(pro == null)
             {
-                return RedirectToAction("ShowToCart", "Cart");
+                return null;
             }
-            Cart cart = Session["Cart"] as Cart;
-            return View(cart);
+            List<CartItem> cartitems = getCart();
+            CartItem check = cartitems.SingleOrDefault(s => s.id_pro == id);
+            if (check != null)
+            {
+                check._shopping_quantity++;
+                return RedirectToAction("ShowToCart");
+            }
+            CartItem item = new CartItem(id);
+            cartitems.Add(item);
+
+            return RedirectToAction("ShowToCart");
         }
 
         public ActionResult Update_Quantity_Cart(FormCollection form)

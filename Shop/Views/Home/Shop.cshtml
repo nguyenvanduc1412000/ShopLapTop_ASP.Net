@@ -110,9 +110,18 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
+<<<<<<< HEAD
                                                             <h4><a class="product_name" href="@Url.Action("Detail", "Product", new {pid=item.id_pro})">@item.name_pro</a></h4>
                                                             <div class="price-box">
                                                                 <span class="new-price">$@item.price</span>
+=======
+                                                            <div class="add-actions">
+                                                                <ul class="add-actions-link">
+                                                                    <li class="add-cart active"><a href="@Url.Action("AddToCart","Cart", new {@id = item.id_pro})">Add to cart</a></li>
+                                                                    <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                                    <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
+                                                                </ul>
+>>>>>>> b387e2240491166a4daef210aa008aca8f9a1b09
                                                             </div>
                                                         </div>
                                                         <div class="add-actions">

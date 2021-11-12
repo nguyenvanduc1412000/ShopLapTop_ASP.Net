@@ -162,6 +162,7 @@ C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\Microsoft.CodeDom.
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.dll
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.pdb
+<<<<<<< HEAD
 F:\ShopLapTop_G3\Shop\bin\Shop.dll.config
 F:\ShopLapTop_G3\Shop\bin\Shop.dll
 F:\ShopLapTop_G3\Shop\bin\Shop.pdb
@@ -248,3 +249,6 @@ F:\ShopLapTop_G3\Shop\bin\PagedList.dll
 F:\ShopLapTop_G3\Shop\bin\PagedList.Mvc.dll
 F:\ShopLapTop_G3\Shop\bin\PagedList.xml
 F:\ShopLapTop_G3\Shop\bin\PagedList.Mvc.xml
+=======
+C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.AssemblyReference.cache
+>>>>>>> b387e2240491166a4daef210aa008aca8f9a1b09
