@@ -162,13 +162,9 @@
                                 @* @using (Html.BeginForm("Shop", "Home", FormMethod.Get)) {*@
 
                                 <form action="@Url.Action("Shop","Home")" class="hm-searchbox" method="get">
-                                   
-                                    <select class="nice-select select-search-category">
-                                        <option value="0">All</option>
-                                        <option value="10">Laptops</option>
 
-                                    </select>
-                                    <input type="text" placeholder="Enter your search key ..." name="searchString">
+       
+                                    @Html.TextBox("searchString", ViewBag.CurrentFilter as string, "Enter your search key ...")
                                     <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                                 </form>
 

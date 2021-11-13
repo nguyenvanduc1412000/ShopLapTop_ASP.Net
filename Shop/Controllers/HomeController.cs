@@ -79,13 +79,14 @@ namespace Shop.Controllers
             }
             
             ViewBag.search = searchString;
+            ViewBag.currentFile= searchString;
             ViewBag.order = orderBy;
             ViewBag.id_cat = cat.id_cat;
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(list.ToPagedList(pageNumber, pageSize));
         }
-        
+       
 
     }
 }
