@@ -3,6 +3,36 @@
     ViewBag.Title = "Detail";
 
 }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.id = @Model.id_pro;
+            // lấy số lượng đặt hàng
+            model.Quantity = $("#ipQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Thêm giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
 <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -129,19 +159,19 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="single-add-to-cart">
-                                                        <form action="#" class="cart-quantity">
-                                                            <div class="quantity">
-                                                                <label>Quantity</label>
-                                                                <div class="cart-plus-minus">
-                                                                    <input class="cart-plus-minus-box" value="1" type="text">
-                                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                                </div>
+                                                    <div class="form-row  mt-4">
+                                                        <div class="form-group col-md flex-grow-0">
+                                                            <div class="input-group mb-3 input-spinner">
+                                                                <input type="text" id="ipQuantity" class="form-control" value="1">
                                                             </div>
-                                                            <button class="add-to-cart" type="submit">Add to cart</button>
-                                                        </form>
-                                                    </div>
+                                                        </div> <!-- col.// -->
+                                                        <div class="form-group col-md">
+                                                            <a href="#" id="addtocart" class="btn  btn-primary">
+                                                                <i class="fas fa-shopping-cart"></i>
+                                                                <span class="text" h>Thêm vào giỏ hàng</span>
+                                                            </a>
+                                                        </div> <!-- col.// -->
+                                                    </div> <!-- row.// -->
                                                     <div class="product-additional-info pt-25">
                                                         <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
                                                         <div class="product-social-sharing pt-25">

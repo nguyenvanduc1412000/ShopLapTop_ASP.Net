@@ -252,3 +252,12 @@ F:\ShopLapTop_G3\Shop\bin\PagedList.Mvc.xml
 =======
 C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.AssemblyReference.cache
 >>>>>>> b387e2240491166a4daef210aa008aca8f9a1b09
+C:\Users\asus\OneDrive\Máy tính\ShopLap\ShopLapTop_ASP.Net\Shop\bin\PagedList.dll
+C:\Users\asus\OneDrive\Máy tính\ShopLap\ShopLapTop_ASP.Net\Shop\bin\PagedList.Mvc.dll
+C:\Users\asus\OneDrive\Máy tính\ShopLap\ShopLapTop_ASP.Net\Shop\bin\PagedList.xml
+C:\Users\asus\OneDrive\Máy tính\ShopLap\ShopLapTop_ASP.Net\Shop\bin\PagedList.Mvc.xml
+C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\PagedList.dll
+C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\PagedList.Mvc.dll
+C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\PagedList.xml
+C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\bin\PagedList.Mvc.xml
+C:\Users\admin\Desktop\Project C#\ShopLapTop_ASP.Net\Shop\obj\Debug\Shop.csproj.CopyComplete
