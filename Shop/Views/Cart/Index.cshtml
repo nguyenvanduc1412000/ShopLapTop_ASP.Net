@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Shop.Models.Cart>
+﻿@model IEnumerable<Shop.Models.CartModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -31,6 +31,8 @@
     });
 </script>
 
+
+
 <section class="section-content padding-y">
     <div class="container">
         <div class="row">
@@ -51,12 +53,12 @@
                             {
                                 foreach (var item in Model)
                                 {
-                                    <tr id="product-@item.product.id_pro">
+                                    <tr id="product-@item.Product.id_pro">
                                         <td>
                                             <figure class="itemside">
-                                                <div class="aside"><img src="~/Content/images/items/@item.product.images" class="img-sm"></div>
+                                                <div class="aside"><img src="~/Content/images/items/@item.Product.images" class="img-sm"></div>
                                                 <figcaption class="info">
-                                                    <a href="#" class="title text-dark">@item.product.name_pro</a>
+                                                    <a href="#" class="title text-dark">@item.Product.name_pro</a>
                                                 </figcaption>
                                             </figure>
                                         </td>
@@ -65,11 +67,11 @@
                                         </td>
                                         <td>
                                             <div class="price-wrap">
-                                                <var class="price">@item.product.</var>
+                                                <var class="price">@item.Product.price</var>
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-right">
-                                            <input type="hidden" value="@item.product.id_pro" id="productid" />
+                                            <input type="hidden" value="@item.Product.id_pro" id="productid" />
                                             <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
 
                                             <a href="" class="btn btn-light" id="removecart"> Remove</a>

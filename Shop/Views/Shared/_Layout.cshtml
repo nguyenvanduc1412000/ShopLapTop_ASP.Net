@@ -193,8 +193,8 @@
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
                                                 <span class="item-text">
-                                                    £160
-                                                    <span class="cart-item-count">2</span>
+                                                    
+                                                    <span class="cart-item-count" id="CartCount">@Session["count"]</span>
                                                 </span>
                                             </div>
                                             <span></span>
@@ -227,7 +227,11 @@
                                                 </ul>
                                                 <p class="minicart-total">SUBTOTAL: <span>£160</span></p>
                                                 <div class="minicart-button">
-                                                    <a href="~/Cart/ShowToCart" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <a href="@Url.Action("Index","Cart")" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                        <span class="item-text">
+                                                     
+                                                            <span class="cart-item-count" id="CartCount">@Session["count"]</span>
+                                                        </span>
                                                         <span>View Full Cart</span>
                                                     </a>
                                                     <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
