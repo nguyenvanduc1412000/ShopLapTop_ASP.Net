@@ -51,6 +51,7 @@ namespace Shop.Controllers
             }
             else
             {
+                list= all.products.Where(n => n.name_pro.Contains(searchString)).ToList();
                 if (orderBy == "")
                 {
                     list = all.products.Where(n => n.name_pro.Contains(searchString)).ToList();
