@@ -7,16 +7,16 @@
 
 
 
-
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.username)
         </th>
+       
         
-        <th>
-            @Html.DisplayNameFor(model => model.dob)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.gender)
         </th>
@@ -29,13 +29,12 @@
         <th>
             @Html.DisplayNameFor(model => model.address)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.role)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Block)
-        </th>*@
-        <th></th>
+            Action
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -43,10 +42,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.username)
         </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.dob)
-        </td>
+       
+       
         <td>
             @Html.DisplayFor(modelItem => item.gender)
         </td>
@@ -59,13 +56,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.address)
         </td>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.role)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Block)
-        </td>*@
-       
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_user }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_user }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_user })
+        </td>
     </tr>
 }
 

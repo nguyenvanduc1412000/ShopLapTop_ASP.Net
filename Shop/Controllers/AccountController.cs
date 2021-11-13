@@ -31,6 +31,7 @@ namespace Shop.Controllers
             {
                 Session["id_user"] = _user.id_user;
                 Session["email"] = _user.email;
+                Session["role"] = _user.role;
                
                 return RedirectToAction("Index","Home");
             }
