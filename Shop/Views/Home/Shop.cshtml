@@ -76,9 +76,9 @@
                             <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                                 <div class="product-area shop-product-area">
                                     @if (Model.Count == 0)
-            {
-                <h5>There are no result</h5>
-            }
+                                     {
+                                    <h5>There are no result</h5>
+                                    }
                                     <div class="row">
                                         @foreach (var item in Model)
                                         {
@@ -89,7 +89,7 @@
 
                                                 <div class="single-product-wrap">
                                                     <div class="product-image">
-                                                        <a href="@Url.Action("Detail", "Product", new {pid=item.id_pro})">
+                                                        <a href="@Url.Action("Detail", "Product", new { pid = item.id_pro })">
                                                             <img src="@item.images" alt="Li's Product Image">
                                                         </a>
                                                         <span class="sticker">New</span>
@@ -110,18 +110,15 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-<<<<<<< HEAD
-                                                            <h4><a class="product_name" href="@Url.Action("Detail", "Product", new {pid=item.id_pro})">@item.name_pro</a></h4>
+                                                            <h4><a class="product_name" href="@Url.Action("Detail", "Product", new { pid = item.id_pro })">@item.name_pro</a></h4>
                                                             <div class="price-box">
                                                                 <span class="new-price">$@item.price</span>
-=======
                                                             <div class="add-actions">
                                                                 <ul class="add-actions-link">
-                                                                    <li class="add-cart active"><a href="@Url.Action("AddToCart","Cart", new {@id = item.id_pro})">Add to cart</a></li>
+                                                                    <li class="add-cart active"><a href="@Url.Action("AddToCart", "Cart", new { @id = item.id_pro })">Add to cart</a></li>
                                                                     <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                                     <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
                                                                 </ul>
->>>>>>> b387e2240491166a4daef210aa008aca8f9a1b09
                                                             </div>
                                                         </div>
                                                         <div class="add-actions">
@@ -136,18 +133,37 @@
                                                 <!-- single-product-wrap end -->
 
                                             </div>
-                                        }
+
                                     </div>
+                                        }
                                 </div>
                             </div>
                             <div class="paginatoin-area">
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 pt-xs-15">
+                                    <div class="col-lg-4 col-md-4 pt-xs-15">
 
                                     </div>
 
                                     <!--phân trang-->
-
+                                    <style>
+                                        /* thiết lập style cho thẻ a */
+                                        .pagination a {
+                                            color: black;
+                                            float: left;
+                                            padding: 8px 16px;
+                                            text-decoration: none;
+                                            transition: background-color .3s;
+                                        }
+                                            /* thiết lập style cho class active */
+                                            .pagination a.active {
+                                                background-color: dodgerblue;
+                                                color: white;
+                                            }
+                                            /* thêm màu nền khi người dùng hover vào class không active */
+                                            .pagination a:hover:not(.active) {
+                                                background-color: #ddd;
+                                            }
+                                    </style>
                                     @Html.PagedListPager(Model, page => Url.Action("Shop", "Home",
                                    new { searchString = ViewBag.search, id_cat = ViewBag.id_cat, orderBy = ViewBag.order,  page }))
 
@@ -159,27 +175,13 @@
                     </div>
                     <!-- shop-products-wrapper end -->
                 </div>
-
+                </div>
                 <div class="col-lg-3 order-2 order-lg-1">
                     <!--sidebar-categores-box start  -->
                     <div class="sidebar-categores-box">
                         <div class="sidebar-title">
                             <h2>LIST</h2>
                         </div>
-                        <!-- btn-clear-all start -->
-                        
-                        <!-- btn-clear-all end -->
-                        <!-- filter-sub-area start -->
-                        <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                            
-                            <div class="size-checkbox">
-                                <ul>
-                                </ul>
-
-                            </div>
-                        </div>
-                        <!-- filter-sub-area end -->
-
                     </div>
                     <!--sidebar-categores-box end  -->
 
