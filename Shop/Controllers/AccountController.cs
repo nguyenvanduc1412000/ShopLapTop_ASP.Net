@@ -32,7 +32,7 @@ namespace Shop.Controllers
                 Session["id_user"] = _user.id_user;
                 Session["email"] = _user.email;
                 Session["role"] = _user.role;
-               
+                Session["user"] = _user;
                 return RedirectToAction("Index","Home");
             }
         }
@@ -112,7 +112,6 @@ namespace Shop.Controllers
             }
             return View();
         }
-
-
+      
     }
 }
