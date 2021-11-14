@@ -41,11 +41,13 @@ public class AdminController : Controller
             var productOrder = (from o in db.OrderLines
                                 join p in db.products on o.pid equals p.id_pro
                                 group o.quantity by p into productCount
+                                
                                 select new Count
                                 {
                                     Name = productCount.Key.name_pro,
                                     Sum = (int)productCount.Sum()
-                                }).Take(8).ToList();
+                                }).OrderByDescending(c=> c.Sum)
+                                .Take(8).ToList();
             r.productOrder = productOrder;
             return View(r);
         }
