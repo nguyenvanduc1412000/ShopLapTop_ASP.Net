@@ -10,10 +10,10 @@
 
 
 <div>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-    </div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
 @*@using (Html.BeginForm("Index", "Products", FormMethod.Get))
     {
         <p>
@@ -81,31 +81,33 @@
 
 </table>
 <div>
- Page @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Index", "Products",
-new { page }))
-<style>
-    .pagination {
-        width: 400px;
-        margin-left: 50px;
-    }
-
-        .pagination a {
-            display: block;
-            color: black;
-            float: left;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: background-color .3s;
+    Page @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Products",
+    new { page }))
+    <style>
+        .pagination {
+            width: 400px;
+            margin-left: 50px;
         }
 
-            .pagination a.active {
-                background-color: #4CAF50;
-                color: white;
+            .pagination a {
+                display: block;
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
             }
 
-            .pagination a:hover:not(.active) {
-                background-color: #ddd;
-            }
-</style>
+                .pagination a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                .pagination a:hover:not(.active) {
+                    background-color: #ddd;
+                }
+    </style>
 </div>
+
+

@@ -20,8 +20,9 @@ namespace Shop.Controllers
         [HttpPost]
         public ActionResult Authen(user _user)
         {
+            
             var check = _db.users.Where(s => s.email.Equals(_user.email) && s.password.Equals(_user.password)).FirstOrDefault();
-           if(check == null||_user.email==null||_user.password==null)
+            if (check == null || _user.email == null || _user.password == null)
             {
                 ViewBag.err = "Error Mail or Pass ! Try again please!";
                 return View("Login", _user);
@@ -29,11 +30,9 @@ namespace Shop.Controllers
             }
             else
             {
-                Session["id_user"] = _user.id_user;
-                Session["email"] = _user.email;
-                Session["role"] = _user.role;
-                Session["user"] = _user;
-                return RedirectToAction("Index","Home");
+                Session["id_user"] = check.id_user;
+                Session["email"] = check.email;
+                return RedirectToAction("Shop","Home");
             }
         }
         [HttpGet]
@@ -112,6 +111,7 @@ namespace Shop.Controllers
             }
             return View();
         }
-      
+
+
     }
 }
