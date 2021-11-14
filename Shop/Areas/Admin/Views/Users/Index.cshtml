@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Shop.Models.user>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using Shop.Models;
+@model PagedList.IPagedList<Shop.Models.user>
 
 @{
     ViewBag.Title = "Index";
@@ -6,66 +9,98 @@
 }
 
 
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.username)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().username)
         </th>
-       
-        
+
+
         <th>
-            @Html.DisplayNameFor(model => model.gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.phone)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.address)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().phone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.role)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().role)
         </th>
         <th>
             Action
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.username)
-        </td>
-       
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.role)
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_user }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_user }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_user })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.role)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_user }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_user }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_user })
+            </td>
+        </tr>
+    }
 
 </table>
+<div>
+    Page @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Users",
+                new { searchString = ViewBag.search, id_cat = ViewBag.id_cat, orderBy = ViewBag.order, page }))
+    <style>
+        .pagination {
+            width: 400px;
+            margin-left: 50px;
+        }
+
+            .pagination a {
+                display: block;
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
+            }
+
+                .pagination a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                .pagination a:hover:not(.active) {
+                    background-color: #ddd;
+                }
+    </style>
+    <!--End phân trang -->
+</div>

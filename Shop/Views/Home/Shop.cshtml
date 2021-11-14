@@ -512,7 +512,7 @@
                                                     </div>
 
                                                     <!--phân trang-->
-
+                                                    Page @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) of @Model.PageCount
                                                     @Html.PagedListPager(Model, page => Url.Action("Shop", "Home",
                 new { searchString = ViewBag.search, id_cat = ViewBag.id_cat, orderBy = ViewBag.order, page }))
                                                     <style>

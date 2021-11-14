@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Models;
+using PagedList;
 
 namespace Shop.Areas.Admin.Controllers
 {
@@ -15,9 +16,11 @@ namespace Shop.Areas.Admin.Controllers
         private LAPTOP_ASPEntities db = new LAPTOP_ASPEntities();
 
         // GET: Admin/Users
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.users.ToList());
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(db.users.ToList().ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/Users/Details/5

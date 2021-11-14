@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Models;
+using PagedList;
 
 namespace Shop.Areas.Admin.Controllers
 {
@@ -15,7 +16,7 @@ namespace Shop.Areas.Admin.Controllers
         private LAPTOP_ASPEntities db = new LAPTOP_ASPEntities();
 
         // GET: Admin/Products
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, int? page)
         {
             List<product> products = null;
             if (string.IsNullOrEmpty(searchString))
@@ -27,12 +28,9 @@ namespace Shop.Areas.Admin.Controllers
                 products = db.products.Include(p => p.category).Where(n => n.name_pro.Contains(searchString)).ToList();
 
             }
-
-
-
-
-
-            return View(products);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/Products/Details/5

@@ -178,6 +178,7 @@
     <Compile Include="Models\product.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RevenusModel.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -2173,7 +2174,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ChangePass.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
