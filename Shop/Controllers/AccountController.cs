@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Models;
@@ -113,6 +115,118 @@ namespace Shop.Controllers
             return View();
         }
 
+        [NonAction]
+        public void sendResetLink(string EmailID, string resetCode)
+        {
+            var verifyUrl = "/Account/resetPassword/" + resetCode;
+            var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
+            
+            var fromEmail = new MailAddress("???@gmai.com", "System Call");//nhap email o ???
+            var toEmail = new MailAddress(EmailID);
+            var fromPassword = "**********"; //nhap password 
 
+            string subject = "Reset Password";
+            string body = "Hi,<br/><br/>We got request for reset your Account password. Please click on the below link to reset your password" +
+                "<br/><br/><a href="+link+">Reset Password link<a/>";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address,fromPassword)
+            };
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+            smtp.Send(message);
+        }
+
+        public ActionResult forgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult forgotPassword(string EmailID)
+        {
+            string message = "";
+            bool status = false;
+            //verify
+            using(LAPTOP_ASPEntities context = new LAPTOP_ASPEntities())
+            {
+                var account = context.users.Where(a => a.email == EmailID).FirstOrDefault();
+                if (account != null)
+                {
+                    //send email for reset
+                    string resetCode = Guid.NewGuid().ToString();
+                    sendResetLink(account.email, resetCode);
+                    account.resetCode = resetCode;
+
+                    context.Configuration.ValidateOnSaveEnabled = false;
+                    context.SaveChanges();
+                    message = "Reset password link has been sent to your Email";
+                }
+                else
+                {
+                    message = "Account not found";
+                }
+            }
+            ViewBag.Message = message;
+            return View();
+        }
+
+        public ActionResult resetPassword(string id)
+        {
+            //verify
+            using(LAPTOP_ASPEntities context = new LAPTOP_ASPEntities())
+            {
+                var user = context.users.Where(a => a.resetCode == id).FirstOrDefault();
+                if (user != null)
+                {
+                    ResetPasswordModel model = new ResetPasswordModel();
+                    model.resetCode = id;
+                    return View(model);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult resetPassword(ResetPasswordModel model)
+        {
+            var message = "";
+            if (ModelState.IsValid)
+            {
+                using (LAPTOP_ASPEntities context = new LAPTOP_ASPEntities())
+                {
+                    var user = context.users.Where(a => a.resetCode == model.resetCode).FirstOrDefault();
+                    if(user != null)
+                    {
+                        user.password = model.newPassword;
+                        user.resetCode = "";
+
+                        context.Configuration.ValidateOnSaveEnabled = false;
+                        context.SaveChanges();
+                        message = "New Password update successfully";
+                    }
+                }
+            }
+            else
+            {
+                message = "Something invalid";
+            }
+            ViewBag.Message = message;
+            return View(model);
+        }
     }
 }

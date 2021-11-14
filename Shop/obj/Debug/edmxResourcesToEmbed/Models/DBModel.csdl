@@ -69,6 +69,7 @@
     <Property Name="Block" Type="Int32" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="user" ToRole="Order" />
     <NavigationProperty Name="User_access" Relationship="Self.FK_useraccess_user" FromRole="user" ToRole="User_access" />
+    <Property Name="resetCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="User_access">
     <Key>

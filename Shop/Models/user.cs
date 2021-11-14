@@ -31,6 +31,7 @@ namespace Shop.Models
         public string address { get; set; }
         public string role { get; set; }
         public Nullable<int> Block { get; set; }
+        public string resetCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

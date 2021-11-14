@@ -53,6 +53,7 @@
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="LAPTOP_ASPModel.user">
         <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="resetCode" ColumnName="resetCode" />
           <ScalarProperty Name="id_user" ColumnName="id_user" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
